@@ -18,17 +18,7 @@ const collectionMap: Record<CollectionNames, CollectionConfig> = {
     access: {
       read: () => true
     },
-    upload: {
-      imageSizes: [
-        {
-          height: 100,
-          width: 100,
-          name: 'thumbnail',
-          crop: 'center'
-        }
-      ]
-    },
-
+    upload: {},
     fields: []
   }
 }
