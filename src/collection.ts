@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload/types'
 
-type CollectionNames = 'user' | 'product'
+type CollectionNames = 'user' | 'product' | 'media'
 const collectionMap: Record<CollectionNames, CollectionConfig> = {
   user: {
     slug: 'users',
@@ -24,6 +24,24 @@ const collectionMap: Record<CollectionNames, CollectionConfig> = {
         name: 'name'
       }
     ]
+  },
+  media: {
+    slug: 'media',
+    access: {
+      read: () => true
+    },
+    upload: {
+      imageSizes: [
+        {
+          height: 100,
+          width: 100,
+          name: 'thumbnail',
+          crop: 'center'
+        }
+      ]
+    },
+
+    fields: []
   }
 }
 
