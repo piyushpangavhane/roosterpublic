@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload/types'
 
-type CollectionNames = 'user' | 'product' | 'media'
+type CollectionNames = 'user' | 'media'
 const collectionMap: Record<CollectionNames, CollectionConfig> = {
   user: {
     slug: 'users',
@@ -12,18 +12,6 @@ const collectionMap: Record<CollectionNames, CollectionConfig> = {
       read: () => true
     },
     fields: []
-  },
-  product: {
-    slug: 'products',
-    access: {
-      read: () => true
-    },
-    fields: [
-      {
-        type: 'text',
-        name: 'name'
-      }
-    ]
   },
   media: {
     slug: 'media',
