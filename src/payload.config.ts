@@ -3,7 +3,7 @@ import { buildConfig } from 'payload/config'
 import collectionMap from './collection'
 
 export default buildConfig({
-  serverURL: 'http://localhost:3000',
+  serverURL: process.env.PAYLOAD_URL,
   admin: {
     user: collectionMap.user.slug
   },
