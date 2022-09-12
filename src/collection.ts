@@ -1,34 +1,30 @@
-import { CollectionConfig } from "payload/types";
+import { CollectionConfig } from 'payload/types'
 
-const collectionMap: Record<"string", CollectionConfig> = {
+type CollectionNames = 'user' | 'product'
+const collectionMap: Record<CollectionNames, CollectionConfig> = {
   user: {
-    slug: "users",
+    slug: 'users',
     auth: true,
     admin: {
-      useAsTitle: "email",
+      useAsTitle: 'email'
     },
     access: {
-      read: () => true,
+      read: () => true
     },
-    fields: [
-      // Email added by default
-      // Add more fields as needed
-    ],
+    fields: []
   },
   product: {
-    slug: "products",
+    slug: 'products',
     access: {
-      read: () => true,
+      read: () => true
     },
     fields: [
       {
-        type: "text",
-        name: "name",
-      },
-      // Email added by default
-      // Add more fields as needed
-    ],
-  },
-};
+        type: 'text',
+        name: 'name'
+      }
+    ]
+  }
+}
 
-export default collectionMap;
+export default collectionMap
