@@ -1,13 +1,15 @@
 import path from 'path'
 import { buildConfig } from 'payload/config'
 import collectionMap from './collection'
+import globals from './globals'
 
 export default buildConfig({
-  serverURL: 'http://localhost:3000',
+  serverURL: process.env.PAYLOAD_URL,
   admin: {
     user: collectionMap.user.slug
   },
   collections: Object.values(collectionMap),
+  globals,
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts')
   },
