@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload/types'
 import { SocialField } from './fields'
-import { Domains, Social } from './options'
+import { Domains } from './options'
 
 const collectionMap: Record<string, CollectionConfig> = {
   user: {
