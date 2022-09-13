@@ -1,3 +1,5 @@
+import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
+import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3'
 import path from 'path'
 import { buildConfig } from 'payload/config'
 import collectionMap from './collection'
@@ -15,5 +17,23 @@ export default buildConfig({
   },
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql')
-  }
+  },
+  plugins: [
+    cloudStorage({
+      collections: {
+        media: {
+          prefix: 'cms/media',
+          adapter: s3Adapter({
+            config: {
+              credentials: {
+                accessKeyId: process.env.S3_ACCESS_KEY_ID,
+                secretAccessKey: process.env.S3_SECRET_ACCESS_KEY
+              }
+            },
+            bucket: process.env.S3_BUCKET
+          })
+        }
+      }
+    })
+  ]
 })
