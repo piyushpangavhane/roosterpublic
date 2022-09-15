@@ -15,7 +15,7 @@ dockerize:
     BASE_IMAGE: $CI_REGISTRY/vesatogo/website-cms/api
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $BASE_IMAGE:latest -t $BASE_IMAGE:$CI_COMMIT_SHORT_SHA
+    - docker build -t $BASE_IMAGE:latest -t $BASE_IMAGE:$CI_COMMIT_SHORT_SHA .
     - docker image push -a $BASE_IMAGE
   rules:
     - if: $CI_COMMIT_BRANCH === $CI_DEFAULT_BRANCH
