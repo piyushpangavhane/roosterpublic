@@ -1,0 +1,34 @@
+stages:
+  - dockerize
+  - deploy
+
+dockerize:
+  stage: dockerize
+  image: docker:20.10.12
+  before_script:
+    - mv $ENV_FILE $CI_PROJECT_DIR/.env
+  services:
+    - docker:20.10.12-dind
+  environment:
+    name: production
+  variables:
+    BASE_IMAGE: $CI_REGISTRY/vesatogo/website-cms/api
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $BASE_IMAGE:latest -t $BASE_IMAGE:$CI_COMMIT_SHORT_SHA .
+    - docker image push -a $BASE_IMAGE
+  rules:
+    - if: $CI_COMMIT_BRANCH === $CI_DEFAULT_BRANCH
+
+deploy:
+  stage: deploy
+  environment:
+    name: production
+  before_script:
+    - wget https://storage.googleapis.com/kubernetes-release/release/v1.20.2/bin/linux/amd64/kubectl
+    - chmod +x ./kubectl
+    - mv ./kubectl /usr/local/bin/kubectl
+  script:
+    - echo "Restart Kubernetes"
+  rules:
+    - if: $CI_COMMIT_BRANCH === $CI_DEFAULT_BRANCH
