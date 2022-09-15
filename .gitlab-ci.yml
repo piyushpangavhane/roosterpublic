@@ -18,7 +18,7 @@ dockerize:
     - docker build -t $BASE_IMAGE:latest -t $BASE_IMAGE:$CI_COMMIT_SHORT_SHA .
     - docker image push -a $BASE_IMAGE
   rules:
-    - if: $CI_COMMIT_BRANCH === $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 deploy:
   stage: deploy
@@ -31,4 +31,4 @@ deploy:
   script:
     - echo "Restart Kubernetes"
   rules:
-    - if: $CI_COMMIT_BRANCH === $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
