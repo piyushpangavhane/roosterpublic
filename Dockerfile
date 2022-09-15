@@ -1,32 +1,16 @@
-ARG NODE_VERSION=16
+FROM node:16-alpine as builder
 
-# Setup the build container.
-FROM node:${NODE_VERSION}-alpine AS build
 
-WORKDIR /home/node
+WORKDIR /app
 
-# Install dependencies.
-COPY package*.json .
+COPY . .
 
-RUN yarn install
+RUN yarn install --frozen-lockfile
 
-# Copy the source files.
-COPY src src
-COPY tsconfig.json .
+ENV NODE_ENV production
 
-# Build the application.
-RUN yarn build && yarn cache clean
+RUN yarn build
 
-# Setup the runtime container.
-FROM node:${NODE_VERSION}-alpine
-
-WORKDIR /home/node
-
-# Copy the built application.
-COPY --from=build /home/node /home/node
-
-# Expose the service's port.
 EXPOSE 3000
 
-# Run the service.
-CMD ["yarn", "run", "serve"]
+CMD [ "yarn","serve" ]
