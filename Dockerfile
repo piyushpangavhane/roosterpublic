@@ -1,6 +1,5 @@
-FROM node:16-alpine as builder
-
-
+FROM node:16-alpine
+LABEL maintainer="Malik Bagwala<malik.bagwala@vesatogo.com>"
 WORKDIR /app
 
 COPY . .
