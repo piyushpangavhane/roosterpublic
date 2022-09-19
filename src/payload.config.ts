@@ -16,7 +16,10 @@ export default buildConfig({
     outputFile: path.resolve(__dirname, 'payload-types.ts')
   },
   graphQL: {
-    schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql')
+    schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
+    disablePlaygroundInProduction: parseInt(process.env.DISABLE_PLAYGROUND)
+      ? true
+      : false
   },
   plugins: [
     cloudStorage({
