@@ -19,7 +19,11 @@ const collectionMap: Record<string, CollectionConfig> = {
     access: {
       read: () => true
     },
-    upload: {},
+    upload: {
+      adminThumbnail({ doc }) {
+        return `https://cdn.vesatogo.com/cms/media/${doc.filename}`
+      }
+    },
     fields: []
   },
   testimonial: {
