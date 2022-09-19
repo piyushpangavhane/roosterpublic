@@ -98,10 +98,6 @@ const globals: GlobalConfig[] = [
         ]
       }
     ]
-  },
-  {
-    slug: 'newstuff',
-    fields: []
   }
 ]
 
