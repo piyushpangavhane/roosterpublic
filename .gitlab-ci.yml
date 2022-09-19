@@ -10,9 +10,11 @@ dockerize:
   services:
     - docker:20.10.12-dind
   environment:
-    name: production
+    name: testing
+    url: https://cms-api-testing.vesatogo.in/
   variables:
     BASE_IMAGE: $CI_REGISTRY/vesatogo/website-cms/api
+    ENVIRONMENT: $CI_ENVIRONMENT_NAME
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker build -t $BASE_IMAGE:latest -t $BASE_IMAGE:$CI_COMMIT_SHORT_SHA .
@@ -23,12 +25,16 @@ dockerize:
 deploy:
   stage: deploy
   environment:
-    name: production
+    name: testing
+    url: https://cms-api-testing.vesatogo.in/
+  variables:
+    ENVIRONMENT: $CI_ENVIRONMENT_NAME
   before_script:
     - wget https://storage.googleapis.com/kubernetes-release/release/v1.20.2/bin/linux/amd64/kubectl
     - chmod +x ./kubectl
     - mv ./kubectl /usr/local/bin/kubectl
   script:
-    - echo "Restart Kubernetes"
+    - kubectl config use-context vesatogo/weave:marketplace-$ENVIRONMENT
+    - kubectl rollout restart deployment/cms-api-app -n $ENVIRONMENT
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
