@@ -1,34 +1,38 @@
 stages:
-  # - dockerize
+  - dockerize
   - deploy
 
-# dockerize:
-#   stage: dockerize
-#   image: docker:20.10.12
-#   before_script:
-#     - mv $ENV_FILE $CI_PROJECT_DIR/.env
-#   services:
-#     - docker:20.10.12-dind
-#   environment:
-#     name: testing
-#     url: https://cms-api-testing.vesatogo.in/
-#   variables:
-#     BASE_IMAGE: $CI_REGISTRY/vesatogo/website-cms/api
-#     ENVIRONMENT: $CI_ENVIRONMENT_NAME
-#   script:
-#     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-#     - docker build -t $BASE_IMAGE:latest -t $BASE_IMAGE:$CI_COMMIT_SHORT_SHA .
-#     - docker image push -a $BASE_IMAGE
-#   rules:
-#     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+.base_rules:
+  rules:
+    - &alpha_tag
+      if: $CI_COMMIT_TAG =~ /^v\d+.\d+.\d+-alpha.\d+$/
+      variables:
+        ENVIRONMENT: 'testing'
+        ENVIRONMENT_URL: 'https://cms-api-testing.vesatogo.in'
+        APP_VERSION: $CI_COMMIT_TAG
+
+dockerize:
+  stage: dockerize
+  image: docker:20.10.12
+  services:
+    - docker:20.10.12-dind
+  environment:
+    name: $ENVIRONMENT
+    url: $ENVIRONMENT_URL
+  variables:
+    BASE_IMAGE: $CI_REGISTRY/vesatogo/website-cms/api
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $BASE_IMAGE:latest -t $BASE_IMAGE:$APP_VERSION .
+    - docker image push -a $BASE_IMAGE
+  rules:
+    - *alpha_tag
 
 deploy:
   stage: deploy
   environment:
-    name: testing
-    url: https://cms-api-testing.vesatogo.in/
-  variables:
-    ENVIRONMENT: $CI_ENVIRONMENT_NAME
+    name: $ENVIRONMENT
+    url: $ENVIRONMENT_URL
   before_script:
     - wget https://storage.googleapis.com/kubernetes-release/release/v1.20.2/bin/linux/amd64/kubectl
     - chmod +x ./kubectl
@@ -38,5 +42,5 @@ deploy:
     - echo "Restart Kubernetes"
     - kubectl config use-context vesatogo/$CI_PROJECT_NAME:marketplace-$ENVIRONMENT
     - kubectl rollout restart deployment/cms-api-app -n $ENVIRONMENT
-  # rules:
-  #   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  rules:
+    - *alpha_tag
