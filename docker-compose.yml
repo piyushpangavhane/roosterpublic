@@ -9,7 +9,7 @@ services:
     env_file:
       - .env
     environment:
-      - MONGODB_URI=mongodb://mongo/payload
+      - MONGODB_URI=mongodb://db/payload
   db:
     image: mongo
     container_name: vt-mongo
