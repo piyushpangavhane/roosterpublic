@@ -1,11 +1,19 @@
-version: "3"
+version: '3'
 
 services:
+  app:
+    build: .
+    container_name: vt-cms
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    environment:
+      - MONGODB_URI=mongodb://mongo/payload
   db:
     image: mongo
+    container_name: vt-mongo
     restart: always
-    ports:
-      - "27017:27017"
     volumes:
       - db:/data/db
 
