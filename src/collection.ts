@@ -43,7 +43,12 @@ const collectionMap: Record<string, CollectionConfig> = {
         return `https://cdn.vesatogo.com/cms/media/${doc.filename}`
       }
     },
-    fields: []
+    fields: [
+      {
+        name: 'alt',
+        type: 'text'
+      }
+    ]
   },
   testimonial: {
     slug: 'testimonials',
@@ -122,6 +127,19 @@ const collectionMap: Record<string, CollectionConfig> = {
       {
         name: 'title',
         type: 'text'
+      },
+      {
+        name: 'slug',
+        type: 'text',
+        unique: true,
+        required: true,
+        validate(value) {
+          const slugRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+          if (!slugRegex.test(value)) {
+            return "Slug can only contain lowercase letters, numbers and hyphens. It can't start or end with a hyphen."
+          }
+          return true
+        }
       },
       {
         name: 'subTitle',
