@@ -2446,6 +2446,19 @@
   resolved "https://registry.yarnpkg.com/@payloadcms/plugin-cloud-storage/-/plugin-cloud-storage-1.0.8.tgz#469b44d16d60ee8e16a24895e69672227f4ab285"
   integrity sha512-wD69mP11EJtta42JZLkDEShszOiB1w+sNB3wXigYPSfu4a/5qJ5+nOlgHowkTkERwt9uzBiRUVCpu3mdGwwmYg==
 
+"@payloadcms/plugin-form-builder@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@payloadcms/plugin-form-builder/-/plugin-form-builder-1.0.7.tgz#6fd40f716c4e0682a219bca5b53ecd405a916aac"
+  integrity sha512-Y/3MpoUSyzE6WXhGPo3pGbg1UD6hMYRQrRgFVAiwOBnZsxmzilW2Irs95rpiVA98u9ET3YbVQAZFgcEV0ZLjnQ==
+  dependencies:
+    deepmerge "^4.2.2"
+    escape-html "^1.0.3"
+
+"@payloadcms/plugin-seo@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@payloadcms/plugin-seo/-/plugin-seo-1.0.8.tgz#643dac998f002de71e6bf6bb84f6c2018de4b5b8"
+  integrity sha512-ZzolOdouuqG59Qb4UH3IVd7MIHYy9krh0G5VVOlFHehfixGBWMAlnhTB+QOfyDetckKfUroJX6flSIV8HmWDAA==
+
 "@polka/url@^1.0.0-next.20":
   version "1.0.0-next.21"
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
@@ -4624,7 +4637,7 @@ escalade@^3.1.1:
   resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
   integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
 
-escape-html@~1.0.3:
+escape-html@^1.0.3, escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==
