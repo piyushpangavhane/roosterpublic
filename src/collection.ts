@@ -1,7 +1,7 @@
+import { nanoid } from 'nanoid'
 import { CollectionConfig } from 'payload/types'
 import { SocialField } from './fields'
 import { Domains } from './options'
-
 const collectionMap: Record<string, CollectionConfig> = {
   user: {
     slug: 'users',
@@ -15,6 +15,25 @@ const collectionMap: Record<string, CollectionConfig> = {
     fields: []
   },
   media: {
+    hooks: {
+      beforeOperation: [
+        async ({
+          args, // Original arguments passed into the operation
+          operation // name of the operation
+        }) => {
+          if (operation === 'create' || operation === 'update') {
+            const file = args.req.files?.file
+            if (file) {
+              const fileExtension = file.name.split('.').pop()
+              const fileHash = nanoid(12)
+              const fileName = `${fileHash}.${fileExtension}`
+              args.req.files.file.name = fileName
+            }
+          }
+          return args // Return operation arguments as necessary
+        }
+      ]
+    },
     slug: 'media',
     access: {
       read: () => true
