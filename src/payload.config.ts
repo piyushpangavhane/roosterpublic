@@ -15,9 +15,6 @@ export default buildConfig({
     // the user collection slug to use for authenticating to the admin panel, one per express app
     user: Users.slug,
 
-    // override existing payload styles with custom look
-    css: path.resolve(__dirname, './styles/custom.scss'),
-
     // admin site customization for SEO
     meta: {
       titleSuffix: '| Vesatogo',
