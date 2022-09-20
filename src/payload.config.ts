@@ -7,11 +7,18 @@ import { Vesatogo } from './constants'
 import schema from './schema'
 import seo from '@payloadcms/plugin-seo'
 import formBuilder from '@payloadcms/plugin-form-builder'
+import Users from './schema/Users'
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_URL,
   admin: {
-    user: 'users',
+    // the user collection slug to use for authenticating to the admin panel, one per express app
+    user: Users.slug,
+
+    // override existing payload styles with custom look
+    css: path.resolve(__dirname, './styles/custom.scss'),
+
+    // admin site customization for SEO
     meta: {
       titleSuffix: '| Vesatogo',
       ogImage: Vesatogo.LOGO,
@@ -33,6 +40,12 @@ export default buildConfig({
     disablePlaygroundInProduction: parseInt(process.env.DISABLE_PLAYGROUND)
       ? true
       : false
+  },
+  // rateLimits provide basic API DDOS (Denial-of-service) protection and can limit accidental server load from scripts
+  rateLimit: {
+    trustProxy: true,
+    window: 2 * 60 * 1000, // 2 minutes
+    max: 2400 // limit each IP per windowMs
   },
   plugins: [
     formBuilder({}),
