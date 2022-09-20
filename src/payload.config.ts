@@ -2,10 +2,9 @@ import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
 import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3'
 import path from 'path'
 import { buildConfig } from 'payload/config'
-import collections from './schema'
 import Logo from './components/Logo'
 import { Vesatogo } from './constants'
-import globals from './globals'
+import schema from './schema'
 import seo from '@payloadcms/plugin-seo'
 import formBuilder from '@payloadcms/plugin-form-builder'
 
@@ -25,8 +24,7 @@ export default buildConfig({
       }
     }
   },
-  collections,
-  globals,
+  ...schema,
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts')
   },

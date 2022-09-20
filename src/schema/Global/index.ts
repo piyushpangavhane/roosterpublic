@@ -1,5 +1,5 @@
 import { GlobalConfig } from 'payload/types'
-import { SocialField } from './fields'
+import { SocialField } from '../../fields'
 
 const globals: GlobalConfig[] = [
   {

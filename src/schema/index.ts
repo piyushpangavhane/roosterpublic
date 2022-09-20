@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload/types'
+import globals from './Global'
 import Impact from './Impact'
 import Media from './Media'
 import Members from './Members'
@@ -17,4 +17,4 @@ const collections = [
   Testimonials
 ]
 
-export default collections
+export default { collections, globals } as const
