@@ -3,12 +3,25 @@ import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3'
 import path from 'path'
 import { buildConfig } from 'payload/config'
 import collectionMap from './collection'
+import Logo from './components/Logo'
+import { Vesatogo } from './constants'
 import globals from './globals'
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_URL,
   admin: {
-    user: collectionMap.user.slug
+    user: collectionMap.user.slug,
+    meta: {
+      titleSuffix: '| Vesatogo',
+      ogImage: Vesatogo.LOGO,
+      favicon: Vesatogo.LOGO
+    },
+    components: {
+      graphics: {
+        Logo: Logo,
+        Icon: Logo
+      }
+    }
   },
   collections: Object.values(collectionMap),
   globals,
