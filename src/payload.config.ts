@@ -63,6 +63,9 @@ export default buildConfig({
       collections: {
         media: {
           prefix: 'cms/media',
+          generateFileURL({ filename, prefix }) {
+            return `https://cdn.vesatogo.com/${prefix}/${filename}`
+          },
           adapter: s3Adapter({
             config: {
               region: process.env.S3_REGION || 'ap-south-1',

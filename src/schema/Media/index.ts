@@ -25,11 +25,6 @@ const Media: CollectionConfig = {
   access: {
     read: () => true
   },
-  upload: {
-    adminThumbnail({ doc }) {
-      return `https://cdn.vesatogo.com/cms/media/${doc.filename}`
-    }
-  },
   fields: [
     {
       name: 'alt',
