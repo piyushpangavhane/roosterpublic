@@ -69,15 +69,16 @@ const Products: CollectionConfig = {
       type: 'array',
       fields: [
         {
-          name: 'name',
-          type: 'text'
+          name: 'logo',
+          type: 'upload',
+          relationTo: 'media'
         },
         {
-          name: 'description',
-          type: 'textarea'
+          name: 'metric',
+          type: 'number'
         },
         {
-          name: 'icon',
+          name: 'title',
           type: 'text'
         },
         {
@@ -89,7 +90,7 @@ const Products: CollectionConfig = {
           type: 'checkbox'
         }
       ]
-    },
+    }
   ]
 }
 

@@ -1,5 +1,4 @@
 import globals from './Global'
-import Impact from './Impact'
 import Media from './Media'
 import Members from './Members'
 import Products from './Products'
@@ -9,7 +8,6 @@ import Users from './Users'
 
 const collections = [
   Users,
-  Impact,
   Media,
   Members,
   Products,
