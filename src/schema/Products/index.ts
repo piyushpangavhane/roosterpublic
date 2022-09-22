@@ -60,8 +60,7 @@ const Products: CollectionConfig = {
         },
         {
           name: 'icon',
-          type: 'upload',
-          relationTo: 'media'
+          type: 'text'
         }
       ]
     }
