@@ -1,5 +1,5 @@
 import { GlobalConfig } from 'payload/types'
-import { SocialField } from '../../fields'
+import { ImpactField, SocialField } from '../../fields'
 
 const globals: GlobalConfig[] = [
   {
@@ -98,6 +98,10 @@ const globals: GlobalConfig[] = [
         ]
       }
     ]
+  },
+  {
+    slug: 'impacts',
+    fields: [ImpactField]
   }
 ]
 

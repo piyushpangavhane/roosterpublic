@@ -63,7 +63,33 @@ const Products: CollectionConfig = {
           type: 'text'
         }
       ]
-    }
+    },
+    {
+      name: 'impacts',
+      type: 'array',
+      fields: [
+        {
+          name: 'name',
+          type: 'text'
+        },
+        {
+          name: 'description',
+          type: 'textarea'
+        },
+        {
+          name: 'icon',
+          type: 'text'
+        },
+        {
+          name: 'isFirst',
+          type: 'checkbox'
+        },
+        {
+          name: 'isLast',
+          type: 'checkbox'
+        }
+      ]
+    },
   ]
 }
 

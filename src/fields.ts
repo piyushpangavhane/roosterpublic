@@ -16,3 +16,31 @@ export const SocialField: Field = {
     }
   ]
 }
+
+export const ImpactField: Field = {
+  name: 'impact',
+  type: 'array',
+  fields: [
+   {
+      name: 'logo',
+      type: 'upload',
+      relationTo: 'media'
+    },
+    {
+      name: 'metric',
+      type: 'number'
+    },
+    {
+      name: 'title',
+      type: 'text'
+    },
+    {
+      name: 'isFirst',
+      type: 'checkbox'
+    },
+    {
+      name: 'isLast',
+      type: 'checkbox'
+    }
+  ]
+}
