@@ -1,4 +1,4 @@
-import { Block, Field } from 'payload/types'
+import { Field } from 'payload/types'
 import { Social } from './options'
 
 export const SocialField: Field = {
