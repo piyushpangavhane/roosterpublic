@@ -4,6 +4,9 @@ import { ImpactField, SocialField } from '../../fields'
 const globals: GlobalConfig[] = [
   {
     slug: 'contact',
+    access: {
+      read: () => true
+    },
     fields: [
       {
         name: 'email',
@@ -38,6 +41,9 @@ const globals: GlobalConfig[] = [
   },
   {
     slug: 'journey',
+    access: {
+      read: () => true
+    },
     fields: [
       {
         name: 'Timeline',
@@ -101,6 +107,9 @@ const globals: GlobalConfig[] = [
   },
   {
     slug: 'impacts',
+    access: {
+      read: () => true
+    },
     fields: [ImpactField]
   }
 ]
