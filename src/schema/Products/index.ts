@@ -90,7 +90,36 @@ const Products: CollectionConfig = {
           type: 'checkbox'
         }
       ]
-    }
+    },
+    {
+      name: 'submodules',
+      type: 'array',
+      fields: [
+        {
+          name: 'Image',
+          type: 'upload',
+          relationTo: 'media'
+        },
+        {
+          name: 'submodule',
+          type: 'array',
+          fields:[
+            {
+              name: 'title',
+              type: 'text'
+            },
+            {
+              name: 'description',
+              type: 'text'
+            },
+            {
+              name: 'logo',
+              type: 'text'
+            },
+          ]
+        },
+      ]
+    },
   ]
 }
 
