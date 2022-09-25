@@ -101,25 +101,19 @@ const Products: CollectionConfig = {
           relationTo: 'media'
         },
         {
-          name: 'submodule',
-          type: 'array',
-          fields:[
-            {
-              name: 'title',
-              type: 'text'
-            },
-            {
-              name: 'description',
-              type: 'text'
-            },
-            {
-              name: 'logo',
-              type: 'text'
-            },
-          ]
+          name: 'title',
+          type: 'text'
         },
+        {
+          name: 'description',
+          type: 'text'
+        },
+        {
+          name: 'logo',
+          type: 'text'
+        }
       ]
-    },
+    }
   ]
 }
 
