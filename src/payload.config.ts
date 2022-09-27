@@ -11,8 +11,7 @@ import Users from './schema/Users'
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_URL,
-  cors: ['http://localhost:4000'],
-  csrf: ['http://localhost:4000'],
+  cors: '*',
   admin: {
     // the user collection slug to use for authenticating to the admin panel, one per express app
     user: Users.slug,
