@@ -111,6 +111,29 @@ const globals: GlobalConfig[] = [
       read: () => true
     },
     fields: [ImpactField]
+  },
+  {
+    slug: 'protected',
+    access: {
+      read({ req: { user } }) {
+        if (['admin', 'api'].includes(user?.role)) {
+          return true
+        }
+        return false
+      },
+      update({ req: { user } }) {
+        if (user?.role === 'admin') {
+          return true
+        }
+        return false
+      }
+    },
+    fields: [
+      {
+        type: 'text',
+        name: 'secret'
+      }
+    ]
   }
 ]
 
