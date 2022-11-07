@@ -31,6 +31,10 @@ const Members: CollectionConfig = {
       options: Domains
     },
     {
+      name: 'order',
+      type: 'number'
+    },
+    {
       name: 'isActive',
       type: 'checkbox',
       defaultValue: true,
