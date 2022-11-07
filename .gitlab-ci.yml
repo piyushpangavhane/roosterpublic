@@ -40,7 +40,7 @@ deploy:
     - kubectl config get-contexts
   script:
     - echo "Restart Kubernetes"
-    - kubectl config use-context vesatogo/$CI_PROJECT_NAME:marketplace-$ENVIRONMENT
-    - kubectl rollout restart deployment/cms-api-app -n $ENVIRONMENT
+    - kubectl config use-context vesatogo/$CI_PROJECT_NAME:internal-tools
+    - kubectl rollout restart deployment/cms-api-app -n tools
   rules:
     - *alpha_tag
