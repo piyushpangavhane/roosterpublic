@@ -19,6 +19,10 @@ const Stakeholders: CollectionConfig = {
       name: 'logo',
       type: 'upload',
       relationTo: 'media'
+    },
+    {
+      name: 'order',
+      type: 'number'
     }
   ]
 }
