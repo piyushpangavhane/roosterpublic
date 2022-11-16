@@ -21,6 +21,10 @@ export const ImpactField: Field = {
   name: 'impact',
   type: 'array',
   fields: [
+    {
+      name: 'hide',
+      type: 'checkbox'
+    },
    {
       name: 'logo',
       type: 'upload',
