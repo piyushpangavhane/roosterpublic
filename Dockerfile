@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:18.12.1-alpine
 LABEL maintainer="Malik Bagwala<malik.bagwala@vesatogo.com>"
 WORKDIR /app
 
