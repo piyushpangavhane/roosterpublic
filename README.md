@@ -1,6 +1,6 @@
-## Vesatogo CMS
+## Rooster
 
-This project houses all the data to make server driven webpages in vesatogo products.
+This project is a CMS built on top of payload that houses all the data to make server driven webpages in vesatogo products.
 
 ### Installation Guide
 
