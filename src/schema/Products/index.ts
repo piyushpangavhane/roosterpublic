@@ -113,6 +113,10 @@ const Products: CollectionConfig = {
           type: 'text'
         }
       ]
+    },
+    {
+      name: 'privacy-policy',
+      type: 'richText',
     }
   ]
 }
