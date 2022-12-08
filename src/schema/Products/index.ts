@@ -115,7 +115,7 @@ const Products: CollectionConfig = {
       ]
     },
     {
-      name: 'privacy-policy',
+      name: 'privacyPolicy',
       type: 'richText',
     }
   ]
