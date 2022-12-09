@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload/types'
+import { triggerVercelDeployment } from '../../utils/trigger-vercel-deployment'
 
 const Products: CollectionConfig = {
   slug: 'products',
@@ -116,9 +117,12 @@ const Products: CollectionConfig = {
     },
     {
       name: 'privacyPolicy',
-      type: 'richText',
+      type: 'richText'
     }
-  ]
+  ],
+  hooks: {
+    afterChange: [triggerVercelDeployment]
+  }
 }
 
 export default Products
