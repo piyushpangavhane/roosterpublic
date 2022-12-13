@@ -1,11 +1,12 @@
 export const triggerDiscordNotifications = async (content) => {
-  if (process.env.NODE_ENV !== 'production') return
+  // if (process.env.NODE_ENV !== 'production') return
   try {
     const response = await fetch(process.env.DISCORD_INQUIRIES_WEBHOOK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        content: `>>> ***You have a new Inquiry!***
+        content: `>>> 
+***You have a new Inquiry!***
 **Name:**
 ${content?.submissionData[0]?.value} \n
 **Phone:**
@@ -18,6 +19,7 @@ ${content?.submissionData[3]?.value} \n
 ${content?.submissionData[4]?.value} \n
 **Product Interested in:**
 ${content?.submissionData[5]?.value}
+
         `
       }),
       mode: 'cors'
