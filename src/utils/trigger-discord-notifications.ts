@@ -1,5 +1,5 @@
 export const triggerDiscordNotifications = async (content) => {
-  // if (process.env.NODE_ENV !== 'production') return
+  if (process.env.NODE_ENV !== 'production') return
   try {
     const response = await fetch(process.env.DISCORD_INQUIRIES_WEBHOOK, {
       method: 'POST',
