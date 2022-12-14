@@ -8,6 +8,7 @@ import schema from './schema'
 import seo from '@payloadcms/plugin-seo'
 import formBuilder from '@payloadcms/plugin-form-builder'
 import Users from './schema/Users'
+import { triggerDiscordNotifications } from './utils/trigger-discord-notifications'
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_URL,
@@ -46,7 +47,15 @@ export default buildConfig({
     max: 2400 // limit each IP per windowMs
   },
   plugins: [
-    formBuilder({}),
+    formBuilder({
+      formSubmissionOverrides:{
+        hooks:{
+          afterChange:[({req})=>{
+            triggerDiscordNotifications(req?.body)
+          }]
+        }
+      }
+    }),
     seo({
       collections: ['products'],
       uploadsCollection: 'media',
