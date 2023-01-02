@@ -118,6 +118,10 @@ const Products: CollectionConfig = {
     {
       name: 'privacyPolicy',
       type: 'richText'
+    },
+    {
+      name: 'termsAndConditions',
+      type: 'richText'
     }
   ],
   hooks: {
