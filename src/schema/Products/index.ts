@@ -114,14 +114,6 @@ const Products: CollectionConfig = {
           type: 'text'
         }
       ]
-    },
-    {
-      name: 'privacyPolicy',
-      type: 'richText'
-    },
-    {
-      name: 'termsAndConditions',
-      type: 'richText'
     }
   ],
   hooks: {
