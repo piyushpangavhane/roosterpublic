@@ -48,16 +48,18 @@ export default buildConfig({
   },
   plugins: [
     formBuilder({
-      formSubmissionOverrides:{
-        hooks:{
-          afterChange:[({req})=>{
-            triggerDiscordNotifications(req?.body)
-          }]
+      formSubmissionOverrides: {
+        hooks: {
+          afterChange: [
+            ({ req }) => {
+              triggerDiscordNotifications(req?.body)
+            }
+          ]
         }
       }
     }),
     seo({
-      collections: ['products'],
+      collections: ['products', 'privacy-policy', 'terms'],
       uploadsCollection: 'media',
       generateTitle({ doc }) {
         return doc['title'].value
