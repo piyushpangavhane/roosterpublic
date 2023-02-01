@@ -20,7 +20,7 @@ dockerize:
     name: $ENVIRONMENT
     url: $ENVIRONMENT_URL
   variables:
-    BASE_IMAGE: $CI_REGISTRY/vesatogo/website-cms/api
+    BASE_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH/api
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker build -t $BASE_IMAGE:latest -t $BASE_IMAGE:$APP_VERSION .
