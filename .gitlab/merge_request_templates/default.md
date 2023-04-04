@@ -1,9 +1,8 @@
-/cc @MalikBagwala 
-/assign_reviewer @MalikBagwala 
-/label ~Staging
+/assign_reviewer @MalikBagwala
+/label ~Feature
 /assign me
 
-## Checklist for fleet
+## Checklist for rooster CMS
 
 - [ ] I have thoroughly tested this code locally
 - [ ] I have documented my code
