@@ -18,12 +18,13 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.169.0",
-    "@payloadcms/plugin-cloud-storage": "^1.0.8",
-    "@payloadcms/plugin-form-builder": "^1.0.7",
-    "@payloadcms/plugin-seo": "^1.0.8",
+    "@aws-sdk/lib-storage": "^3.305.0",
+    "@payloadcms/plugin-cloud-storage": "^1.0.14",
+    "@payloadcms/plugin-form-builder": "^1.0.13",
+    "@payloadcms/plugin-seo": "^1.0.10",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "payload": "^1.2.5"
+    "payload": "^1.6.30"
   },
   "devDependencies": {
     "@types/express": "^4.17.9",
