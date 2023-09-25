@@ -23,7 +23,13 @@ jobs:
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Buil Docker image
-        run: 
-          docker build -t piyushpangavhane/rooster .
-          docker push piyushpangavhane/rooster 
+      # - name: Buil Docker image
+      #   run: 
+      #     docker build -t piyushpangavhane/rooster:latest .
+      #     docker push piyushpangavhane/rooster:latest
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: piyushpangavhane/rooster:latest
