@@ -25,5 +25,5 @@ jobs:
 
       - name: Buil Docker image
         run: 
-          docker build -t piyushpangavhane/rooster .
-          docker push piyushpangavhane/rooster 
+          docker build -t piyushpangavhane/rooster:latest .
+          docker push piyushpangavhane/rooster:latest 
