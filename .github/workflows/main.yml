@@ -1,0 +1,21 @@
+name: CI/CD for Roster Project
+
+on:
+  push:
+    branches:
+      - main
+  # Trigger the workflow when a new tag matching the pattern is created
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  dockerize:
+    runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT: 'testing'
+      ENVIRONMENT_URL: 'https://cms-api-testing.vesatogo.in'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
