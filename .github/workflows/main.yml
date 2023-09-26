@@ -25,15 +25,24 @@ jobs:
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
-      - name: Get Git Tag
-        id: get_tag
-        run: echo ::set-output name=tag::$(echo "${GITHUB_REF#refs/tags/}")
+      # - name: Get Git Tag
+      #   id: get_tag
+      #   run: echo ::set-output name=tag::$(echo "${GITHUB_REF#refs/tags/}")
+
+      # - name: Build image
+      #   run: docker build -t ${{ secrets.CONTIANER_REGISTRY }}:${{ steps.get_tag.outputs.tag }} .
+
+      # - name: Logging to DO Registry 
+      #   run: doctl registry login --expiry-seconds 600
+
+      # - name: Push image
+      #   run: docker push ${{ secrets.CONTIANER_REGISTRY }}:${{ steps.get_tag.outputs.tag }} 
 
       - name: Build image
-        run: docker build -t ${{ secrets.CONTIANER_REGISTRY }}:${{ steps.get_tag.outputs.tag }} .
+        run: docker build -t ${{ secrets.CONTIANER_REGISTRY }}:Latest .
 
       - name: Logging to DO Registry 
         run: doctl registry login --expiry-seconds 600
 
       - name: Push image
-        run: docker push ${{ secrets.CONTIANER_REGISTRY }}:${{ steps.get_tag.outputs.tag }} 
+        run: docker push ${{ secrets.CONTIANER_REGISTRY }}:latest
