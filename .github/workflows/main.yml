@@ -5,9 +5,9 @@ on:
     branches:
       - main
    # Trigger the workflow when a new tag matching the pattern is created
-  push:
-    tags:
-      - 'v*.*.*'
+  # push:
+  #   tags:
+  #     - 'v*.*.*'
 
 jobs:
   dockerize:
@@ -20,20 +20,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      # - name: Login to Docker Hub
-      #   run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-
-      # - name: Buil Docker image
-      #   run: 
-      #     docker build -t piyushpangavhane/rooster .
-      #     docker push piyushpangavhane/rooster 
-
-      # - name: Build and push
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     push: true
-      #     tags: piyushpangavhane/rooster:latest
-
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
