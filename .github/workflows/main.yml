@@ -39,10 +39,10 @@ jobs:
       #   run: docker push ${{ secrets.CONTIANER_REGISTRY }}:${{ steps.get_tag.outputs.tag }} 
 
       - name: Build image
-        run: docker build -t ${{ secrets.CONTIANER_REGISTRY }}:latest .
+        run: docker build -t ${{ secrets.CONTIANER_REGISTRY }}:V1.2.1 .
 
       - name: Logging to DO Registry 
         run: doctl registry login --expiry-seconds 600
  
       - name: Push image
-        run: docker push ${{ secrets.CONTIANER_REGISTRY }}:latest
+        run: docker push ${{ secrets.CONTIANER_REGISTRY }}:V1.2.1
