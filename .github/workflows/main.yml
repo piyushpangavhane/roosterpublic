@@ -38,3 +38,6 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Build image
+        run: docker build -t registry.digitalocean.com/kite/roosterashutosh:V1.2 .
