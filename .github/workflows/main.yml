@@ -20,30 +20,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      # - name: Login to Docker Hub
-      #   run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-
-      # - name: Buil Docker image
-      #   run: 
-      #     docker build -t piyushpangavhane/rooster .
-      #     docker push piyushpangavhane/rooster 
-
-      # - name: Build and push
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     push: true
-      #     tags: piyushpangavhane/rooster:latest
-
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
+      - name: Get Git tag
+        id: get_tag
+        run: echo ::set-output name=tag::$(echo "${GITHUB_REF#refs/tags/}")
+
       - name: Build image
-        run: docker build -t ${{ secrets.CONTIANER_REGISTRY }}/roosterashutosh:V1.2 .
+        run: docker build -t ${{ secrets.CONTIANER_REGISTRY }}/roosterashutosh:${{ steps.get_tag.outputs.tag }} .
 
       - name: Logging to DO Registry 
         run: doctl registry login --expiry-seconds 600
 
       - name: Push image
-        run: docker push ${{ secrets.CONTIANER_REGISTRY }}/roosterashutosh:V1.2
+        run: docker push ${{ secrets.CONTIANER_REGISTRY }}/roosterashutosh:${{ steps.get_tag.outputs.tag }}
