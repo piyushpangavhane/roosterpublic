@@ -5,9 +5,9 @@ on:
     branches:
       - main
   # Trigger the workflow when a new tag matching the pattern is created
-  # push:
-  #   tags:
-  #     - 'v*.*.*'
+  push:
+    tags:
+      - 'v*.*.*'
 
 jobs:
   dockerize:
